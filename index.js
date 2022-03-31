@@ -22,8 +22,14 @@ express()
     try {
       const client = await pool.connect();
 
+      const tasks = await client.query(
+        `SELECT * FROM tasks ORDER BY id ASC`
+      );
+      const locals = {
+        'tasks': (tasks) ? tasks.rows : null
+      };
+      res.render('pages/index', locals);
       client.release();
-      res.send("works");
     }
     catch (err) {
       console.error(err);
