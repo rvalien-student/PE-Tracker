@@ -1,0 +1,26 @@
+{
+  "name": "pe-tracker",
+  "version": "1.0.0",
+  "description": "This shows our integration with PT works",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rvalien-student/PE-Tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rvalien-student/PE-Tracker/issues"
+  },
+  "homepage": "https://github.com/rvalien-student/PE-Tracker#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "path": "^0.12.7",
+    "pg": "^8.7.3"
+  }
+}
