@@ -18,7 +18,7 @@ express()
   .use(express.urlencoded({ extended: true }))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
-  .get('/', async (req, res) => {
+  .get('/', async(req, res) => {
     try {
       const client = await pool.connect();
 
@@ -40,15 +40,15 @@ express()
     try {
       const client = await pool.connect();
       const tables = await client.query(
-`SELECT c.relname AS table, a.attname AS column, t.typname AS type
-FROM pg_catalog.pg_class AS c
-LEFT JOIN pg_catalog.pg_attribute AS a
-ON c.oid = a.attrelid AND a.attnum > 0
-LEFT JOIN pg_catalog.pg_type AS t
-ON a.atttypid = t.oid
-WHERE c.relname IN ('users', 'observations', 'students', 'schools', 'tasks')
-ORDER BY c.relname, a.attnum;
-`);
+        `SELECT c.relname AS table, a.attname AS column, t.typname AS type
+        FROM pg_catalog.pg_class AS c
+        LEFT JOIN pg_catalog.pg_attribute AS a
+        ON c.oid = a.attrelid AND a.attnum > 0
+        LEFT JOIN pg_catalog.pg_type AS t
+        ON a.atttypid = t.oid
+        WHERE c.relname IN ('users', 'observations', 'students', 'schools', 'tasks')
+        ORDER BY c.relname, a.attnum;
+        `);
 
       const obs = await client.query(
         `SELECT * FROM observations`
@@ -58,7 +58,6 @@ ORDER BY c.relname, a.attnum;
         'tables': (tables) ? tables.rows : null,
         'obs': (obs) ? obs.rows : null
       };
-
       res.render('pages/db-info', locals);
       client.release();
 
@@ -77,10 +76,9 @@ ORDER BY c.relname, a.attnum;
       const duration = req.body.duration;
 
       const sqlInsert = await client.query(
-`INSERT INTO observations (users_id, students_id, tasks_id, duration)
-VALUES (${usersId}, ${studentsId}, ${tasksId}, ${duration})
-RETURNING id AS new_id;`);
-      console.log(`Tracking task ${tasksId}`);
+        `INSERT INTO observations (users_id, students_id, tasks_id, duration)
+        VALUES (${usersId}, ${studentsId}, ${tasksId}, ${duration})
+        RETURNING id AS new_id;`);
 
       const result = {
         'response': (sqlInsert) ? sqlInsert.rows[0] : null
