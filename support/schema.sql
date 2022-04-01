@@ -28,3 +28,6 @@ CREATE TABLE tasks (
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL
 );
+
+INSERT INTO tasks (name) VALUES
+  ('planned Pres.');

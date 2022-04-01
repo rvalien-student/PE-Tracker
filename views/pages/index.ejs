@@ -24,10 +24,13 @@
         body: JSON.stringify({
           users_id: -1,
           students_id: -1,
-          taskId: id,
-          duration: 1
+          tasks_id: id,
+          duration: "'+00:00:01'"
         })
-      })
+      });
+      const result = await response.json();
+      console.log(result);
+      currentTaskId = id;
     }
   </script>
 </body>
