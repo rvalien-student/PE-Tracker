@@ -30,4 +30,22 @@ CREATE TABLE tasks (
 );
 
 INSERT INTO tasks (name) VALUES
-  ('planned Pres.');
+  ('Planned Presentation');
+INSERT INTO tasks (name) VALUES
+  ('Response Presentation');
+INSERT INTO tasks (name) VALUES
+  ('Monitoring');
+INSERT INTO tasks (name) VALUES
+  ('Performing Feedback');
+INSERT INTO tasks (name) VALUES
+  ('Motivation Feedback');
+INSERT INTO tasks (name) VALUES
+  ('Begin End Class');
+INSERT INTO tasks (name) VALUES
+  ('Equipment Management');
+INSERT INTO tasks (name) VALUES
+  ('Organization');
+INSERT INTO tasks (name) VALUES
+  ('Behavior Management');
+INSERT INTO tasks (name) VALUES
+  ('Other Tasks');

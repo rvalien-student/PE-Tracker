@@ -3,35 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <title>PE Tracker</title>
+  <link href="css/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-  <h1>PE Tracker</h1>
-  <% tasks.forEach(function(r) {%>
-    <button id='<%= r.id %>'
-      onClick='javascript:logTask(<%= r.id %>);'><%= r.name %>
-    </button>
-  <% }); %>
-  <script>
-    let currentTaskId = null;
+  <div id="tracker-wrapper">
+    <h1>PE Tracker</h1>
+    <div id="buttons-wrapper">
+      <% tasks.forEach(function(r) {%>
+        <div class="button-wrapper" id='behavior-button-wrapper-<%= r.id %>'>
+          <button type="button" class="button behavior-button" id='<%= r.id %>' disabled><%= r.name %></button>
+        </div>
+      <% }); %>
+      <div class="button-wrapper" id="begin-end-observation-button-wrapper">
+        <button type=button class="button" id="begin-end-observation-button">Begin Observation</button>
+      </div>
+    </div>
+  </div>
 
-    const logTask = async function(id) {
-      const response = await fetch('/log', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          users_id: -1,
-          students_id: -1,
-          tasks_id: id,
-          duration: "'+00:00:01'"
-        })
-      });
-      const result = await response.json();
-      console.log(result);
-      currentTaskId = id;
-    }
-  </script>
+  <!-- JQuery Library -->
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  <!-- Javascript Files -->
+  <script type="text/javascript" src="js/common.js"></script>
+  <script type="text/javascript" src="js/PEBehavior.js"></script>
+  <script type="text/javascript" src="js/PEObservation.js"></script>
+  <script type="text/javascript" src="js/tracker.js"></script>
 </body>
 </html>
