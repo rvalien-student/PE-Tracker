@@ -1,6 +1,4 @@
-const { table } = require('console');
 const express = require('express');
-const res = require('express/lib/response');
 const path = require('path');
 const PORT = process.env.PORT || 5000;
 const { Pool } = require('pg');

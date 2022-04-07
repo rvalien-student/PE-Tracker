@@ -64,6 +64,7 @@ class PEObservation {
       })
     });
     const result = await response.json();
+    console.log(result);
   }
 
   // Observation ended by user, finish up
